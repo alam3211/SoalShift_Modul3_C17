@@ -19,15 +19,15 @@ void main()
         *value = 10;
 
         printf("KUY JUAL SENJATA (penjual) : %d\n", *value);
-	printf("1. Lihat Stock Senjata \n 2. Tambah Stock Senjata\n");
+	printf("1. Lihat Stock Senjata\n2. Tambah Stock Senjata\n");
 	while(1){	
 	scanf("%d",&menu);
         switch(menu){
 	case 1:
 	for(i=0;i<=5;i++){
-		 printf("%s stock %d\n", weapon[i], stock[i]);
-		}
-		break;
+		if(stock[i]!=0) printf("%s stock %d\n", weapon[i], stock[i]);
+	}
+	break;
 	
 	case 2:
 	scanf("%s %d", tweapon, &tstock);
