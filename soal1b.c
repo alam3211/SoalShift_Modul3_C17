@@ -22,17 +22,17 @@ int main()
         switch(menu){
 	case 1:
 	for(i=0;i<=5;i++){
-		if (stock[i]!=0)
-		printf("%s stock %d\n", weapon[i],stock[i]);
-		
-}	
+		printf("%s stock %d\n", weapon[i],stock[i]);		
+	}
 	break;
 	
 	case 2:
 	scanf("%s %d", tweapon, &tstock);
 	for(i=0;i<=5;i++){
-		if(strcmp(tweapon, weapon[i])==0 && tstock<=stock[i])
-			stock[i]-=tstock;			
+		if(strcmp(tweapon, weapon[i])==0){
+			if(tstock>stock[i]) printf("Belinya kebanyakan mas,stock gacukup\n");
+			else stock[i]-=tstock;			
+		}
 	}
 	break;
 	case 3:
