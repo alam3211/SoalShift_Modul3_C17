@@ -10,7 +10,10 @@ void* calc(void *input){
  	
 	char *c;
 	c=(char*)input;	//convert input ke char
-	int num=*c-'0';	//convert char ke int
+	//printf("char %s\n", c);
+	int num;
+	sscanf(c, "%d", &num);	//convert char ke int
+	
 	int i, hasil=1;
 	for(i=2;i<=num;i++){
 		hasil*=i;
