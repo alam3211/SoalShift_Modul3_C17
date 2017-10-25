@@ -7,12 +7,12 @@
 pthread_t player1;
 pthread_t player2;
 int nomor[2][16], point[2]={0,0};
-int i, j, turn=1;
-int mengisi, menebak;
+int turn=1;
  
 void* tulis(void *arg)
-{
+{	
 	turn=2;
+	int i, j, mengisi, menebak;
     	printf("---player1 mengisi ranjau---\n");
 	for(i=1;i<=4;i++){
 		scanf("%d", &mengisi);		
@@ -36,7 +36,7 @@ void* tulis(void *arg)
 		//printf("j %d\n", j);	
 	}
     	
-	printf("Point player1= %d\n", point[1]);
+	printf("\nPoint player1= %d\n", point[1]);
 	printf("Point player2= %d\n", point[2]);	
 }
 
@@ -44,11 +44,13 @@ void* tulis(void *arg)
 void* baca(void *arg)
 {
 	turn=1;
+	int i, j, mengisi, menebak;	
 	printf("---player2 mengisi ranjau---\n");
 	for(i=1;i<=4;i++){
 		scanf("%d", &mengisi);		
-		if(mengisi<=16) nomor[2][mengisi]=1;
-		else break;	
+		if(mengisi>16) break;
+		else nomor[2][mengisi]=1;
+		printf("i %d\n", i);	
 	}
 
 	printf("---player1 menebak ranjau---\n");
@@ -67,7 +69,7 @@ void* baca(void *arg)
 		//printf("j %d\n", j);	
 	}
 
-	printf("Point player1= %d\n", point[1]);
+	printf("\nPoint player1= %d\n", point[1]);
 	printf("Point player2= %d\n", point[2]);
 }
  
@@ -79,9 +81,6 @@ int main(void){
 		printf("%d\n", i);	
 	}	
 */	
-	printf("Point player1= %d\n", point[1]);
-	printf("Point player2= %d\n", point[2]);
-	
 	while(1){
 		if(turn==1) pthread_create(&(player1), NULL, &tulis, NULL);
     		else if(turn==2) pthread_create(&(player2), NULL, &baca, NULL);
